@@ -1,0 +1,24 @@
+{
+  "name": "secret-santa",
+  "version": "1.0.0",
+  "description": "Serverless python backend with a vue frontend that lives in `/web`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themcaffee/secret-santa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/themcaffee/secret-santa/issues"
+  },
+  "homepage": "https://github.com/themcaffee/secret-santa#readme",
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.1",
+    "serverless-wsgi": "^2.0.2"
+  }
+}
