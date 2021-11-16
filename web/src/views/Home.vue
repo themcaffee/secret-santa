@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h3>Create New Secret Santa List</h3>
+    <b-form @submit="onSubmit">
+      <b-form-group label="Group Name" label-for="name">
+        <b-form-input id="name" v-model="name" required></b-form-input>
+      </b-form-group>
+      <b-button type="submit" variant="primary">Submit</b-button>
+    </b-form>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      name: ''
+    }
+  },
+  onSubmit (event) {
+    event.preventDefault()
   }
 }
 </script>
