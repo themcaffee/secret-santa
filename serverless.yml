@@ -1,4 +1,6 @@
-service: serverless-flask
+service: secret-santa
+
+frameworkVersion: '2'
 
 plugins:
   - serverless-python-requirements
@@ -14,7 +16,7 @@ custom:
 provider:
   name: aws
   runtime: python3.8
-  stage: dev
+  stage: prod
   region: us-west-2
 
 functions:
