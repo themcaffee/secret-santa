@@ -11,6 +11,7 @@ custom:
     packRequirements: false
   pythonRequirements:
     dockerizePip: non-linux
+    pythonBin: python3
 
 provider:
   name: aws
