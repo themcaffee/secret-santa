@@ -12,6 +12,10 @@
 </template>
 
 <style>
+body {
+  background-image: url('~@/assets/knit.jpg');
+  background-repeat: repeat-x;
+}
 #app {
   padding-top: 2em;
 }
