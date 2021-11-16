@@ -5,7 +5,8 @@
       <b-form-group label="Group Name" label-for="name">
         <b-form-input id="name" v-model="name" required></b-form-input>
       </b-form-group>
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <br>
+      <b-button block type="submit" variant="primary">Submit</b-button>
     </b-form>
   </div>
 </template>
