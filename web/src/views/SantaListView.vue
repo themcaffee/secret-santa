@@ -18,12 +18,14 @@
     </b-card>
     <b-card>
       <h3>{{ listName }}</h3>
-      <ul>
-        <li v-for="participant in listParticipants" :key="participant.name">
-          {{ participant.name }}<br>
-          {{ participant.ideas }}
-        </li>
-      </ul>
+      <b-list-group>
+        <b-list-group-item v-for="participant in listParticipants" :key="participant.name">
+          <b>Name:</b> {{ participant.name }}<br>
+          <b>Gift Ideas</b><br>
+          <hr>
+          <div v-for="line in participant.ideas.split('\n')" :key="line">{{ line }}</div>
+        </b-list-group-item>
+      </b-list-group>
     </b-card>
   </div>
 </template>
@@ -44,11 +46,12 @@ export default {
     return {
       formName: '',
       listUuid: '1234',
-      listName: 'Santa List',
+      listName: 'Santa List Name',
       listParticipants: [
         {
           name: 'Mitch',
-          email: 'testemail123@example.com'
+          email: 'testemail123@example.com',
+          ideas: 'blah blah blah\nblah blah'
         }
       ]
     }
