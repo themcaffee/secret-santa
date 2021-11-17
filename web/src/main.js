@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
-Vue.http.options.root = 'https://santa-api.mitchmcaffee.com'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -18,5 +17,8 @@ Vue.use(VueResource)
 new Vue({
   router,
   store,
+  http: {
+    root: 'https://santa-api.mitchmcaffee.com'
+  },
   render: h => h(App)
 }).$mount('#app')
