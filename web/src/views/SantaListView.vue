@@ -72,6 +72,17 @@ export default {
   },
   methods: {
     onSubmit (event) {
+      this.$http.post('https://santa-api.mitchmcaffee.com/list/' + this.listUuid + '/participant', {
+        name: this.formName,
+        email: this.formEmail,
+        exclude: this.formExclude,
+        ideas: this.formIdeas
+      }).then(response => {
+        this.getList()
+        this.resetForm()
+      }, response => {
+        console.log(response)
+      })
       event.preventDefault()
     },
     getList () {
@@ -83,6 +94,12 @@ export default {
       }, response => {
         console.log(response)
       })
+    },
+    resetForm () {
+      this.formName = ''
+      this.formEmail = ''
+      this.formExclude = ''
+      this.formIdeas = ''
     }
   }
 }
