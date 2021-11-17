@@ -6,6 +6,9 @@
         <b-form-group label="Name" label-for="name">
           <b-form-input id="name" v-model="formName" required></b-form-input>
         </b-form-group>
+        <b-form-group label="Email" label-for="email">
+          <b-form-input id="email" v-model="formEmail" required></b-form-input>
+        </b-form-group>
         <b-form-group label="Exclude from matching (Significant others)" label-for="exclude">
           <b-form-select id="exclude" v-model="formExclude" :options="participantNames"></b-form-select>
         </b-form-group>
@@ -48,6 +51,7 @@ export default {
   data () {
     return {
       formName: '',
+      formEmail: '',
       formExclude: '',
       formIdeas: '',
       listUuid: '1234',
