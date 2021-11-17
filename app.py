@@ -16,6 +16,6 @@ def create_list():
   return jsonify(data)
 
 
-@app.route("/list", methods=['GET'])
+@app.route("/list/:id", methods=['GET'])
 def get_list():
   return jsonify({"name": "test secret list", "participants": [{"name": "mitch", "ideas": "blah blah\nblah blah 2"}]})
