@@ -45,13 +45,14 @@ resources:
   Resources:
     SantaListTable:
       Type: AWS::DynamoDB::Table
-      AttributeDefinitions:
-        - AttributeName: uuid
-          AttributeType: S
-      KeySchema:
-        - AttributeName: uuid
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
-      TableName: ${self:custom.tableName}
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: uuid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: uuid
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.tableName}
