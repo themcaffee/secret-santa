@@ -7,7 +7,7 @@ plugins:
   - serverless-wsgi
 
 custom:
-  tableName: 'santa-list-table-${self.provider.stage}'
+  tableName: 'santa-list-table-${self:provider.stage}'
   wsgi:
     app: app.app
     packRequirements: false
