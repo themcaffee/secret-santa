@@ -2,7 +2,6 @@
   <div class="home">
     <b-card>
       <h3>Create New Secret Santa List</h3>
-      <b-form @submit.prevent="onSubmit">
         <b-form-group label="Group Name" label-for="name">
           <b-form-input id="name" v-model="formName" required></b-form-input>
         </b-form-group>
@@ -10,8 +9,7 @@
           <b-form-input id="password" type="password" v-model="formPassword" required></b-form-input>
         </b-form-group>
         <br>
-        <b-button block type="submit" variant="primary">Submit</b-button>
-      </b-form>
+        <b-button block @click="onSubmit()" variant="primary">Submit</b-button>
     </b-card>
   </div>
 </template>
@@ -26,8 +24,7 @@ export default {
       formPassword: ''
     }
   },
-  onSubmit (event) {
-    event.preventDefault()
+  onSubmit () {
     this.$http.post('https://santa-api.mitchmcaffee.com/list', {
       name: this.formName,
       password: this.formPassword
