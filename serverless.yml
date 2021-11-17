@@ -25,3 +25,17 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+
+resources:
+  Resources:
+    listTable:
+      Type: AWS::DynamoDB::Table
+      AttributeDefinitions:
+        - AttributeName: uuid
+        AttributeType: S
+      KeySchema:
+        - AttributeName: uuid
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
