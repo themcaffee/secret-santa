@@ -17,9 +17,9 @@
       </b-form>
     </b-card>
     <b-card>
-      <h3>{{ name }}</h3>
+      <h3>{{ listName }}</h3>
       <ul>
-        <li v-for="participant in participants" :key="participant.name">
+        <li v-for="participant in listParticipants" :key="participant.name">
           {{ participant.name }}
         </li>
       </ul>
@@ -36,11 +36,15 @@
 <script>
 export default {
   name: 'SantaListView',
+  mounted () {
+    this.getList()
+  },
   data () {
     return {
       formName: '',
-      name: 'Santa List',
-      participants: [
+      listUuid: '1234',
+      listName: 'Santa List',
+      listParticipants: [
         {
           name: 'Mitch',
           email: 'testemail123@example.com'
@@ -51,6 +55,15 @@ export default {
   methods: {
     onSubmit (event) {
       event.preventDefault()
+    },
+    getList () {
+      this.listUuid = this.$route.params.listName
+      this.$http.get('https://santa-api.mitchmcaffee.com/list/' + this.listUuid).then(response => {
+        this.listName = response.data.name
+        this.listParticipants = response.data.participants
+      }, response => {
+        console.log(response)
+      })
     }
   }
 }

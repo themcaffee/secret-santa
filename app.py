@@ -12,10 +12,10 @@ def hello():
 
 @app.route("/list", methods=['POST'])
 def create_list():
-  data = request.get_json()
-  print(data)
+  data = {'success': True}
   return jsonify(data)
+
 
 @app.route("/list", methods=['GET'])
 def get_list():
-  return jsonify({"list": [1, 2, 3, 4]})
+  return jsonify({"name": "test secret list", "participants": [{"name": "mitch", "ideas": "blah blah\nblah blah 2"}]})
