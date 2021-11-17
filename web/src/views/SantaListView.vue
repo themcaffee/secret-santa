@@ -20,7 +20,8 @@
       <h3>{{ listName }}</h3>
       <ul>
         <li v-for="participant in listParticipants" :key="participant.name">
-          {{ participant.name }}
+          {{ participant.name }}<br>
+          {{ participant.ideas }}
         </li>
       </ul>
     </b-card>
