@@ -21,3 +21,4 @@ var/
 node_modules/
 
 venv/
+.dynamodb/

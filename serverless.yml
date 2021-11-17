@@ -5,6 +5,7 @@ frameworkVersion: '2'
 plugins:
   - serverless-python-requirements
   - serverless-wsgi
+
 custom:
   wsgi:
     app: app.app
@@ -32,7 +33,7 @@ resources:
       Type: AWS::DynamoDB::Table
       AttributeDefinitions:
         - AttributeName: uuid
-        AttributeType: S
+          AttributeType: S
       KeySchema:
         - AttributeName: uuid
           KeyType: HASH
