@@ -6,6 +6,9 @@
         <b-form-group label="Name" label-for="name">
           <b-form-input id="name" v-model="formName" required></b-form-input>
         </b-form-group>
+        <b-form-group label="Exclude from matching (Significant others)" label-for="exclude">
+          <b-form-select id="exclude" v-model="formExclude" :options="participantNames"></b-form-select>
+        </b-form-group>
         <b-form-group label="Gift ideas & Interests" label-for="ideas">
           <b-form-textarea
             id="ideas"
@@ -45,6 +48,8 @@ export default {
   data () {
     return {
       formName: '',
+      formExclude: '',
+      formIdeas: '',
       listUuid: '1234',
       listName: 'Santa List Name',
       listParticipants: [
@@ -54,6 +59,11 @@ export default {
           ideas: 'blah blah blah\nblah blah'
         }
       ]
+    }
+  },
+  computed: {
+    participantNames () {
+      return this.listParticipants.map(participant => participant.name)
     }
   },
   methods: {
