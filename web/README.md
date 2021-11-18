@@ -1,4 +1,7 @@
-# secret-santa
+# Secret Santa Frontend
+
+Vue frontend for the `secret-santa` project. Deployment through CI utilizes a [forked s3 deploy action](https://github.com/themcaffee/vue-cli-plugin-s3-deploy-action).
+
 
 ## Project setup
 ```
