@@ -24,7 +24,7 @@
     </b-card>
     <b-card>
       <h3>{{ listName }}</h3>
-      <div v-if="participant.length === 0">
+      <div v-if="listParticipants.length === 0">
         <p>No participants yet.</p>
       </div>
       <b-list-group>
