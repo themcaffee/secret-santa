@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     onSubmit (event) {
+      console.log(event)
       event.preventDefault()
       this.$http.post('https://santa-api.mitchmcaffee.com/list', {
         name: this.formName,
