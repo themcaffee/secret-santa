@@ -57,15 +57,9 @@ export default {
       formEmail: '',
       formExclude: '',
       formIdeas: '',
-      listUuid: '1234',
-      listName: 'Santa List Name',
-      listParticipants: [
-        {
-          name: 'Mitch',
-          email: 'testemail123@example.com',
-          ideas: 'blah blah blah\nblah blah'
-        }
-      ]
+      listUuid: '',
+      listName: '',
+      listParticipants: []
     }
   },
   computed: {
