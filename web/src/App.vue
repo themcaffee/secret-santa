@@ -9,7 +9,7 @@
 <style>
 body {
   background-image: url('~@/assets/knit.jpg');
-  background-repeat: repeat-x;
+  background-repeat: repeat-x repeat-y;
 }
 #app {
   padding-top: 2em;
