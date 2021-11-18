@@ -92,8 +92,8 @@ export default {
       this.listUuid = this.$route.params.id
       console.log(this.listUuid)
       this.$http.get('https://santa-api.mitchmcaffee.com/list/' + this.listUuid).then(response => {
-        this.listName = response.data.name
-        this.listParticipants = response.data.participants
+        this.listName = response.data.list.name
+        this.listParticipants = response.data.list.participants
       }, response => {
         console.log(response)
       })
