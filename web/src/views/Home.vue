@@ -28,16 +28,14 @@ export default {
   },
   methods: {
     onSubmit (event) {
-      console.log(event)
       event.preventDefault()
       this.$http.post('https://santa-api.mitchmcaffee.com/list', {
         name: this.formName,
         password: this.formPassword
       }).then(response => {
-        console.log(response.body)
         this.$router.push({ name: 'SantaListView', params: { id: response.body.list.uuid } })
       }, response => {
-        console.log(response)
+        console.error(response)
       })
     }
   }

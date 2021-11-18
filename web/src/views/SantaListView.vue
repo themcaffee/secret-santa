@@ -82,17 +82,16 @@ export default {
         this.getList()
         this.resetForm()
       }, response => {
-        console.log(response)
+        console.error(response)
       })
     },
     getList () {
       this.listUuid = this.$route.params.id
-      console.log(this.listUuid)
       this.$http.get('https://santa-api.mitchmcaffee.com/list/' + this.listUuid).then(response => {
         this.listName = response.data.list.name
         this.listParticipants = response.data.list.participants
       }, response => {
-        console.log(response)
+        console.error(response)
       })
     },
     resetForm () {
