@@ -67,6 +67,9 @@ export default {
   },
   computed: {
     participantNames () {
+      if (this.listParticipants.length === 0) {
+        return []
+      }
       return this.listParticipants.map(participant => participant.name)
     }
   },
