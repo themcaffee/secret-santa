@@ -31,8 +31,7 @@
       <b-list-group>
         <b-list-group-item v-for="participant in listParticipants" :key="participant.name">
           <b>Name:</b> {{ participant.name }}<br>
-          <b>Gift Ideas</b><br>
-          <hr>
+          <b>Gift Ideas:</b><br>
           <div v-for="line in participant.ideas.split('\n')" :key="line">{{ line }}</div>
         </b-list-group-item>
       </b-list-group>

@@ -13,6 +13,7 @@ body {
 }
 #app {
   padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 #nav {
