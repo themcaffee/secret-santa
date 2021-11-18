@@ -9,7 +9,7 @@
         <b-form-group label="Email" label-for="email">
           <b-form-input id="email" v-model="formEmail" required></b-form-input>
         </b-form-group>
-        <b-form-group label="Exclude from matching (Significant others)" label-for="exclude">
+        <b-form-group label="Exclude from matching like Significant others (Optional)" label-for="exclude">
           <b-form-select id="exclude" v-model="formExclude" :options="participantNames"></b-form-select>
         </b-form-group>
         <b-form-group label="Gift ideas & Interests" label-for="ideas">
