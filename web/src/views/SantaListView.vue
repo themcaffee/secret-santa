@@ -1,6 +1,6 @@
 <template>
   <div class="santa-list-view">
-    <b-card id="signup-form">
+    <b-card class="card-margin">
       <h4>Sign Up For Secret Santa</h4>
       <b-form @submit.prevent="onSubmit">
         <b-form-group label="Name" label-for="name">
@@ -23,7 +23,7 @@
         <b-button block type="submit" variant="primary">Submit</b-button>
       </b-form>
     </b-card>
-    <b-card>
+    <b-card class="card-margin">
       <h3>{{ listName }}</h3>
       <div v-if="listParticipants.length === 0">
         <p>No participants yet.</p>
@@ -36,11 +36,19 @@
         </b-list-group-item>
       </b-list-group>
     </b-card>
+    <b-card class="card-margin">
+      <b-input-group>
+        <b-form-input id="password" v-model="formPassword" placeholder="List Creator Password"></b-form-input>
+        <b-input-group-append>
+          <b-button variant="primary">Pair & Send Emails</b-button>
+        </b-input-group-append>
+      </b-input-group>
+    </b-card>
   </div>
 </template>
 
 <style scoped>
-#signup-form {
+.card-margin {
   margin-bottom: 2em;
 }
 </style>
