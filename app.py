@@ -12,6 +12,9 @@ CORS(app, resources={r"*": {"origins": "https://santa.mitchmcaffee.com"}})
 
 
 class ParticipantMap(MapAttribute):
+  """
+  A Participant of a Santa List (ListModel)
+  """
   name = UnicodeAttribute()
   email = UnicodeAttribute()
   exclude = UnicodeAttribute()
@@ -55,11 +58,17 @@ class ListModel(Model):
             return attr
 
 
+"""
+Basic route to make sure the service is still alive
+"""
 @app.route("/")
 def hello():
     return "Hello World!"
 
 
+"""
+Create a new santa list in dynamodb
+"""
 @app.route("/list", methods=['POST'])
 def create_list():
   request_data = request.get_json()
@@ -69,6 +78,9 @@ def create_list():
   return jsonify(data)
 
 
+"""
+Get an existing santa list from dynamodb
+"""
 @app.route("/list/<id>", methods=['GET'])
 def get_list(id):
   try:
@@ -78,6 +90,9 @@ def get_list(id):
     return jsonify({'success': False}), 404
 
 
+"""
+Add a new participant to an existing santa list. Returns 404 if the list isn't found.
+"""
 @app.route("/list/<id>/participant", methods=["POST"])
 def create_participant(id):
   request_data = request.get_json()

@@ -71,6 +71,9 @@ export default {
     }
   },
   methods: {
+    /*
+      Add a participant to this list
+    */
     onSubmit (event) {
       event.preventDefault()
       this.$http.post('https://santa-api.mitchmcaffee.com/list/' + this.listUuid + '/participant', {
@@ -85,6 +88,9 @@ export default {
         console.error(response)
       })
     },
+    /*
+      Get the list defined in the URL from vue-router
+    */
     getList () {
       this.listUuid = this.$route.params.id
       this.$http.get('https://santa-api.mitchmcaffee.com/list/' + this.listUuid).then(response => {

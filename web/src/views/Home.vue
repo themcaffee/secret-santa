@@ -27,6 +27,9 @@ export default {
     }
   },
   methods: {
+    /*
+      Create a new santa list
+    */
     onSubmit (event) {
       event.preventDefault()
       this.$http.post('https://santa-api.mitchmcaffee.com/list', {
