@@ -15,6 +15,7 @@
         <b-form-group label="Gift ideas & Interests" label-for="ideas">
           <b-form-textarea
             id="ideas"
+            v-model="formIdeas"
             placeholder="Write something good! You will not be able to change this later."
             rows="8"></b-form-textarea>
         </b-form-group>
