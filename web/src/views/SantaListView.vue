@@ -24,6 +24,9 @@
     </b-card>
     <b-card>
       <h3>{{ listName }}</h3>
+      <div v-if="participant.length === 0">
+        <p>No participants yet.</p>
+      </div>
       <b-list-group>
         <b-list-group-item v-for="participant in listParticipants" :key="participant.name">
           <b>Name:</b> {{ participant.name }}<br>
