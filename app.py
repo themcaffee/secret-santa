@@ -124,25 +124,31 @@ Match participants and send out emails
 """
 @app.route("/list/<id>/send", methods=["POST"])
 def send_emails(id):
-  santa_list = ListModel.get(str(id))
-  # Create a linked list of participants
-  linked_list = SLinkedList()
-  linked_list.headval = santa_list.participants[0]
-  last = linked_list.headval
-  while len(santa_list.participants) != 0:
-    participant = santa_list.participants.pop(0)
-    # Skip if names match an exclusion in either direction
-    if last.dataval.exclude == participant.name or participant.exclude == last.dataval.name:
-      santa_list.append(participant)
-      continue
-    node = Node(participant)
-    last.nextval = node
-    last = node
-  # Traverse list and print out
-  current = linked_list.headval 
-  while True:
-    print(current.dataval.name + "\t" + current.dataval.exclude)
-    if not current.nextval:
-      break
-    current = current.nextval
-  return jsonify({"success": True})
+  request_data = request.get_json()
+  try:
+    santa_list = ListModel.get(str(id))
+    if santa_list.password != request_data.password:
+      return jsonify({"success": False}), 403
+    # Create a linked list of participants
+    linked_list = SLinkedList()
+    linked_list.headval = santa_list.participants[0]
+    last = linked_list.headval
+    while len(santa_list.participants) != 0:
+      participant = santa_list.participants.pop(0)
+      # Skip if names match an exclusion in either direction
+      if last.dataval.exclude == participant.name or participant.exclude == last.dataval.name:
+        santa_list.append(participant)
+        continue
+      node = Node(participant)
+      last.nextval = node
+      last = node
+    # Traverse list and print out
+    current = linked_list.headval 
+    while True:
+      print(current.dataval.name + "\t" + current.dataval.exclude)
+      if not current.nextval:
+        break
+      current = current.nextval
+    return jsonify({"success": True})
+  except ListModel.DoesNotExist:
+    return jsonify({"success": False}), 404
