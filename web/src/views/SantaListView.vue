@@ -24,6 +24,14 @@
       </b-form>
     </b-card>
     <b-card class="card-margin">
+      <b-input-group>
+        <b-form-input id="password" v-model="formPassword" placeholder="List Creator Password"></b-form-input>
+        <b-input-group-append>
+          <b-button variant="primary" @click="sendEmails()">Pair & Send Emails</b-button>
+        </b-input-group-append>
+      </b-input-group>
+    </b-card>
+    <b-card class="card-margin">
       <h3>{{ listName }}</h3>
       <div v-if="listParticipants.length === 0">
         <p>No participants yet.</p>
@@ -35,14 +43,6 @@
           <div v-for="line in participant.ideas.split('\n')" :key="line">{{ line }}</div>
         </b-list-group-item>
       </b-list-group>
-    </b-card>
-    <b-card class="card-margin">
-      <b-input-group>
-        <b-form-input id="password" v-model="formPassword" placeholder="List Creator Password"></b-form-input>
-        <b-input-group-append>
-          <b-button variant="primary" @click="sendEmails()">Pair & Send Emails</b-button>
-        </b-input-group-append>
-      </b-input-group>
     </b-card>
   </div>
 </template>
