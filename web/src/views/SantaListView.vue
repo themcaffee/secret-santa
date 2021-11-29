@@ -40,7 +40,7 @@
       <b-input-group>
         <b-form-input id="password" v-model="formPassword" placeholder="List Creator Password"></b-form-input>
         <b-input-group-append>
-          <b-button variant="primary">Pair & Send Emails</b-button>
+          <b-button variant="primary" @click="sendEmails()">Pair & Send Emails</b-button>
         </b-input-group-append>
       </b-input-group>
     </b-card>
@@ -65,6 +65,7 @@ export default {
       formEmail: '',
       formExclude: '',
       formIdeas: '',
+      formPassword: '',
       listUuid: '',
       listName: '',
       listParticipants: []
@@ -90,9 +91,11 @@ export default {
         exclude: this.formExclude,
         ideas: this.formIdeas
       }).then(response => {
+        this.$bvToast.toast('Participant added!')
         this.getList()
         this.resetForm()
       }, response => {
+        this.$bvToast.toast('Error submitting form')
         console.error(response)
       })
     },
@@ -105,6 +108,7 @@ export default {
         this.listName = response.data.list.name
         this.listParticipants = response.data.list.participants
       }, response => {
+        this.$bvToast.toast('Error getting list')
         console.error(response)
       })
     },
@@ -113,6 +117,19 @@ export default {
       this.formEmail = ''
       this.formExclude = ''
       this.formIdeas = ''
+      this.formPassword = ''
+    },
+    sendEmails () {
+      this.$http.post('https://santa-api.mitchmcaffee.com/list/' + this.listUuid + '/send', {
+        password: this.formPassword
+      }).then(response => {
+        this.$bvToast.toast('Sent emails successfully')
+        this.getList()
+        this.resetForm()
+      }, response => {
+        this.$bvToast.toast('Error sending emails')
+        console.error(response)
+      })
     }
   }
 }
