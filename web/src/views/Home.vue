@@ -1,6 +1,12 @@
 <template>
   <div class="home">
     <b-card>
+      <h1>Secret Santa List Creator</h1>
+      <p>This is a tool created for friends and family to create secret santa lists, have people join them, and send
+      out emails to participants. Your email address will never be used for any purposes other than receiving your secret santa.
+      This project is open source, <a href="https://github.com/themcaffee/secret-santa">check me out.</a></p>
+    </b-card>
+    <b-card>
       <h3>Create New Secret Santa List</h3>
       <b-form @submit.prevent="onSubmit">
         <b-form-group label="Group Name" label-for="name">
