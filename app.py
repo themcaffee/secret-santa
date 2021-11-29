@@ -198,7 +198,7 @@ def send_emails_endpoint(id):
   request_data = request.get_json()
   try:
     santa_list = ListModel.get(str(id))
-    if santa_list.password != request_data.password:
+    if santa_list.password != request_data['password']:
       return jsonify({"success": False}), 403
     # Create a linked list of participants
     linked_list = SLinkedList()
