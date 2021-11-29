@@ -25,7 +25,7 @@
     </b-card>
     <b-card class="card-margin">
       <b-input-group>
-        <b-form-input id="password" v-model="formPassword" placeholder="List Creator Password"></b-form-input>
+        <b-form-input id="password" v-model="formPassword" placeholder="List Creator Password" type="password"></b-form-input>
         <b-input-group-append>
           <b-button variant="primary" @click="sendEmails()">Pair & Send Emails</b-button>
         </b-input-group-append>
