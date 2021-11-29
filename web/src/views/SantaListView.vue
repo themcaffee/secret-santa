@@ -44,17 +44,6 @@
         </b-input-group-append>
       </b-input-group>
     </b-card>
-    <b-card class="card-margin">
-      <h4>List Creator Console</h4>
-      <b-form inline>
-        <label class="sr-only" for="inline-form-input-password">Password</label>
-        <b-form-input
-          id="inline-form-input-password"
-          class="mb-2 mr-sm-2 mb-sm-0"
-        ></b-form-input>
-        <b-button variant="primary">Match & Send Emails</b-button>
-      </b-form>
-    </b-card>
   </div>
 </template>
 
