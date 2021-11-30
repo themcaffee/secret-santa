@@ -126,7 +126,6 @@ def create_participant(id):
 
 
 def send_email(recipient, gift_participant):
-  configuration_set = "ConfigSet"
   # The subject line for the email.
   subject = "Amazon SES Test (SDK for Python)"
   # The email body for recipients with non-HTML email clients.
@@ -177,10 +176,7 @@ def send_email(recipient, gift_participant):
                   'Data': subject,
               },
           },
-          Source=SENDER,
-          # If you are not using a configuration set, comment or delete the
-          # following line
-          ConfigurationSetName=configuration_set,
+          Source=SENDER
       )
   # Display an error if something goes wrong.	
   except ClientError as e:
