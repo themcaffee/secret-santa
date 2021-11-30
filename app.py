@@ -202,7 +202,7 @@ def send_emails_endpoint(id):
       return jsonify({"success": False}), 403
     # Create a linked list of participants
     linked_list = SLinkedList()
-    linked_list.headval = santa_list.participants[0]
+    linked_list.headval = Node(santa_list.participants[0])
     last = linked_list.headval
     while len(santa_list.participants) != 0:
       participant = santa_list.participants.pop(0)
