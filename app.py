@@ -131,7 +131,7 @@ def send_email(recipient, gift_participant):
   subject = "Your Secret Santa has been selected!"
   # The email body for recipients with non-HTML email clients.
   body_text = ("Secret Santa\r\n"
-              "You have been selected to be Secret Santa for {}!\r\n".format(gift_participant))
+              "You have been selected to be Secret Santa for {}!\r\n".format(gift_participant.name))
   # The HTML body of the email.
   body_html = """<html>
   <head></head>
@@ -140,7 +140,7 @@ def send_email(recipient, gift_participant):
     <p>You have been selected to be Secret Santa for {}!</p>
   </body>
   </html>
-              """.format(gift_participant)            
+              """.format(gift_participant.name)            
   # The character encoding for the email.
   charset = "UTF-8"
 
@@ -216,7 +216,7 @@ def send_emails_endpoint(id):
         break
       current = current.nextval
     # Send out a test email 
-    if not send_email("mitch.mcaffee@gmail.com", linked_list.headval):
+    if not send_email("mitch.mcaffee@gmail.com", linked_list.headval.dataval):
       return jsonify({"success": False}), 500
     return jsonify({"success": True})
   except ListModel.DoesNotExist:
