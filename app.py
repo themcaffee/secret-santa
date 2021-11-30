@@ -208,7 +208,7 @@ def send_emails_endpoint(id):
       participant = santa_list.participants.pop(0)
       # Skip if names match an exclusion in either direction
       if last.dataval.exclude == participant.name or participant.exclude == last.dataval.name:
-        santa_list.append(participant)
+        santa_list.participants.append(participant)
         continue
       node = Node(participant)
       last.nextval = node
