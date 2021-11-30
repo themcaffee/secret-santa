@@ -5,6 +5,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from pynamodb.models import Model
 from pynamodb.attributes import ListAttribute, MapAttribute, UnicodeAttribute
+import boto3
+from botocore.exceptions import ClientError
 
 
 app = Flask(__name__)
