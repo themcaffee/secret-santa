@@ -7,6 +7,7 @@ from pynamodb.models import Model
 from pynamodb.attributes import ListAttribute, MapAttribute, UnicodeAttribute
 import boto3
 from botocore.exceptions import ClientError
+import random
 
 
 app = Flask(__name__)
@@ -198,6 +199,7 @@ def send_emails_endpoint(id):
     santa_list = ListModel.get(str(id))
     if santa_list.password != request_data['password']:
       return jsonify({"success": False}), 403
+    random.shuffle(santa_list.participants)
     # Create a linked list of participants
     linked_list = SLinkedList()
     linked_list.headval = Node(santa_list.participants[0])
