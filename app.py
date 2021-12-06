@@ -149,7 +149,7 @@ def send_email(recipient, gift_participant, list_id):
     "html": body_html}
   print(str(data))
   res = requests.post(
-    os.environ['MAILGUN_URL'],
+    os.environ['MAILGUN_URL'] + "/messages",
     auth=("api", os.environ['MAILGUN_API_KEY']),
     data=data)
   print("Mailgun status code:" + str(res.status_code))
