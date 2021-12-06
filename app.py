@@ -142,16 +142,18 @@ def send_email(recipient, gift_participant, list_id):
   </body>
   </html>
               """.format(gift_participant.name, FULL_URL, list_id)            
+  data = {"from": "Santa <santa@" + os.environ["DOMAIN_NAME"] + ">",
+    "to": [recipient],
+    "subject": "Your Secret Santa Recipient Is Here!",
+    "text": body_text,
+    "html": body_html}
+  print(str(data))
   res = requests.post(
     os.environ['MAILGUN_URL'],
     auth=("api", os.environ['MAILGUN_API_KEY']),
-    data={"from": "Santa <santa@" + os.environ["DOMAIN_NAME"] + ">",
-      "to": [recipient],
-      "subject": "Your Secret Santa Recipient Is Here!",
-      "text": body_text,
-      "html": body_html})
+    data=data)
   print("Mailgun status code:" + str(res.status_code))
-  print("Mailgun response:" + str(res.text))
+  print("Mailgun response:" + str(res.json()))
   return True
 
 
