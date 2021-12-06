@@ -186,12 +186,12 @@ def send_emails_endpoint(id):
       if not current.nextval:
         print("Last")
         print("Name: " + current.dataval.name + "\tMatch: " + linked_list.headval.dataval.name + "\tExclude: " + current.dataval.exclude)
-        if not send_email(linked_list.headval.dataval.email, linked_list.headval.dataval, id):
+        if not send_email(current.dataval.email, linked_list.headval.dataval, id):
           return jsonify({"success": False}), 500
         break
       else:
         print("Name: " + current.dataval.name + "\tMatch: " + current.nextval.dataval.name + "\tExclude: " + current.dataval.exclude)
-        if not send_email(current.dataval.email, current.dataval, id):
+        if not send_email(current.dataval.email, current.nextval.dataval, id):
           return jsonify({"success": False}), 500
       current = current.nextval
     return jsonify({"success": True})
