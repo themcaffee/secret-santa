@@ -135,10 +135,9 @@ def send_email(recipient, gift_participant, list_id):
   <head></head>
   <body>
     <h1>Secret Santa</h1>
-    <p>You have been selected to be Secret Santa for {}!</p>
-    <a href="{}/list/{}">Gift List</a>
-    <br>
-    %unsubscribe_url%
+    <p>You have been selected to be Secret Santa for <b>{}</b>! <a href="{}/list/{}">Gift List</a></p>
+    <br><br><br><br>
+    <a href="%unsubscribe_url%">Unsubscribe from emails like this</a>
   </body>
   </html>
               """.format(gift_participant.name, FULL_URL, list_id)            
