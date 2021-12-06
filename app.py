@@ -11,7 +11,7 @@ import random
 import requests
 
 
-FULL_URL = "https://santa.mitchmcaffee.com"
+FULL_URL = "https://santa." + os.environ["DOMAIN_NAME"]
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": FULL_URL}})
 
@@ -145,7 +145,7 @@ def send_email(recipient, gift_participant, list_id):
   res = requests.post(
     os.environ['MAILGUN_URL'],
     auth=("api", os.environ['MAILGUN_API_KEY']),
-    data={"from": "Santa <santa@mitchmcaffee.com>",
+    data={"from": "Santa <santa@" + os.environ["DOMAIN_NAME"] + ">",
       "to": [recipient],
       "subject": "Your Secret Santa Recipient Is Here!",
       "text": body_text,
