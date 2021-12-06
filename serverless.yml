@@ -47,8 +47,8 @@ functions:
       - http: ANY /
       - http: 'ANY {proxy+}'
     environment:
-      MAILGUN_API_KEY: '${env:MAILGUN_API_KEY}'
-      MAILGUN_URL: '${env:MAILGUN_URL}'
+      MAILGUN_API_KEY: ${env:MAILGUN_API_KEY}
+      MAILGUN_URL: ${env:MAILGUN_URL}
 
 resources:
   Resources:
