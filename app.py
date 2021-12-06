@@ -181,8 +181,10 @@ def send_emails_endpoint(id):
     # Traverse list and print out
     current = linked_list.headval 
     while True:
-      print(current.dataval.name + "\t" + current.dataval.exclude)
+      print("Name: " + current.dataval.name + "\tMatch: " + current.nextval.dataval.name + "\tExclude: " + current.dataval.exclude)
       if not current.nextval:
+        print("Last")
+        print("Name: " + current.dataval.name + "\tMatch: " + linked_list.headval.dataval.name + "\tExclude: " + current.dataval.exclude)
         break
       current = current.nextval
     # Send out a test email 
