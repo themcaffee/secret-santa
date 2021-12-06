@@ -186,13 +186,14 @@ def send_emails_endpoint(id):
       if not current.nextval:
         print("Last")
         print("Name: " + current.dataval.name + "\tMatch: " + linked_list.headval.dataval.name + "\tExclude: " + current.dataval.exclude)
+        if not send_email(linked_list.headval.dataval.email, linked_list.headval.dataval, id):
+          return jsonify({"success": False}), 500
         break
       else:
         print("Name: " + current.dataval.name + "\tMatch: " + current.nextval.dataval.name + "\tExclude: " + current.dataval.exclude)
+        if not send_email(current.dataval.email, current.dataval, id):
+          return jsonify({"success": False}), 500
       current = current.nextval
-    # Send out a test email 
-    if not send_email(os.environ["TEST_EMAIL"], linked_list.headval.dataval, id):
-      return jsonify({"success": False}), 500
     return jsonify({"success": True})
   except ListModel.DoesNotExist:
     return jsonify({"success": False}), 404
