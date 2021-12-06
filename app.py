@@ -11,11 +11,7 @@ import random
 
 
 app = Flask(__name__)
-CORS(app, resources={r"*": {"origins": "https://santa.mitchmcaffee.com"}})
-
-# SES Config
-SENDER = "santa@mitchmcaffee.com"
-AWS_REGION = "us-east-1"
+CORS(app, resources={r"*": {"origins": "https://santa." + os.environ["DOMAIN_NAME"]}})
 
 
 class ParticipantMap(MapAttribute):
@@ -141,47 +137,17 @@ def send_email(recipient, gift_participant):
   </body>
   </html>
               """.format(gift_participant.name)            
-  # The character encoding for the email.
-  charset = "UTF-8"
-
-  # Create a new SES resource and specify a region.
-  client = boto3.client('ses',region_name=AWS_REGION)
-
-  # Try to send the email.
-  try:
-      #Provide the contents of the email.
-      response = client.send_email(
-          Destination={
-              'ToAddresses': [
-                  recipient,
-              ],
-          },
-          Message={
-              'Body': {
-                  'Html': {
-                      'Charset': charset,
-                      'Data': body_html,
-                  },
-                  'Text': {
-                      'Charset': charset,
-                      'Data': body_text,
-                  },
-              },
-              'Subject': {
-                  'Charset': charset,
-                  'Data': subject,
-              },
-          },
-          Source=SENDER
-      )
-  # Display an error if something goes wrong.	
-  except ClientError as e:
-      print(e.response['Error']['Message'])
-      return False
-  else:
-      print("Email sent! Message ID:"),
-      print(response['MessageId'])
-      return True
+  res = requests.post(
+    os.environ['MAILGUN_URL'],
+    auth=("api", os.environ['MAILGUN_API_KEY']),
+    data={"from": "Santa <santa@" + os.environ["DOMAIN_NAME"] + ">",
+      "to": [recipient],
+      "subject": "Your Secret Santa Recipient Is Here!",
+      "text": body_text,
+      "html": body_html})
+  print("Mailgun status code:" + str(res.status_code))
+  print("Mailgun response:" + str(res.text))
+  return True
 
 
 """

@@ -46,6 +46,10 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+    environment:
+      MAILGUN_API_KEY: '${env:MAILGUN_API_KEY}'
+      MAILGUN_URL: '${env:MAILGUN_URL}'
+      DOMAIN_NAME: '${env:DOMAIN_NAME}'
 
 resources:
   Resources:
