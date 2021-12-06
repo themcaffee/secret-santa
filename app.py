@@ -8,9 +8,10 @@ from pynamodb.attributes import ListAttribute, MapAttribute, UnicodeAttribute
 import boto3
 from botocore.exceptions import ClientError
 import random
+import requests
 
 
-FULL_URL = "https://santa." + os.environ['DOMAIN_NAME']
+FULL_URL = "https://santa.mitchmcaffee.com"
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": FULL_URL}})
 
@@ -128,7 +129,7 @@ def send_email(recipient, gift_participant, list_id):
   subject = "Your Secret Santa has been selected!"
   # The email body for recipients with non-HTML email clients.
   body_text = ("Secret Santa\r\n"
-              "You have been selected to be Secret Santa for {}!\r\n{}/list/{}\r\n%unsubscribe_url%".format(gift_participant.name, FULL_DOMAIN, list_id))
+              "You have been selected to be Secret Santa for {}!\r\n{}/list/{}\r\n%unsubscribe_url%".format(gift_participant.name, FULL_URL, list_id))
   # The HTML body of the email.
   body_html = """<html>
   <head></head>
@@ -140,7 +141,7 @@ def send_email(recipient, gift_participant, list_id):
     %unsubscribe_url%
   </body>
   </html>
-              """.format(gift_participant.name, FULL_DOMAIN, list_id)            
+              """.format(gift_participant.name, FULL_URL, list_id)            
   res = requests.post(
     os.environ['MAILGUN_URL'],
     auth=("api", os.environ['MAILGUN_API_KEY']),
