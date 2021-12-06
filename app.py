@@ -10,7 +10,7 @@ from botocore.exceptions import ClientError
 import random
 
 
-FULL_URL = "https://santa." + os.environ["DOMAIN_NAME"]
+FULL_URL = "https://santa." + os.environ['DOMAIN_NAME']
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": FULL_URL}})
 
