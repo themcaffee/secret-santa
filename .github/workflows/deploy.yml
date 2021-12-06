@@ -27,6 +27,8 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+        MAILGUN_URL: ${{ secrets.MAILGUN_URL }}
   deploy-frontend:
     name: deploy-frontend
     runs-on: ubuntu-latest
@@ -46,5 +48,3 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         BASE_DIRECTORY: web
-        MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
-        MAILGUN_URL: ${{ secrets.MAILGUN_URL }}
