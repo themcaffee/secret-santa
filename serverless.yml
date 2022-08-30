@@ -1,6 +1,6 @@
 service: secret-santa
 
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 plugins:
   - serverless-python-requirements
