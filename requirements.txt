@@ -1,6 +1,6 @@
 boto3==1.20.16
 botocore==1.23.16
-certifi==2022.12.7
+certifi==2023.7.22
 charset-normalizer==2.0.9
 click==8.0.3
 Flask==2.0.2
